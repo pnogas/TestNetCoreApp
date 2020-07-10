@@ -13,9 +13,9 @@ pipeline {
         stage('Start Code Analysis') {
             steps {
                 withSonarQubeEnv('PaulSonarQube') {
-                    bat "SonarScanner.MSBuild.exe  begin /k:TestNetCoreApp"
+                    bat "dotnet SonarScanner.MSBuild.dll  begin /k:TestNetCoreApp"
                     bat "dotnet build TestNetCoreApp.sln"
-                    bat "SonarScanner.MSBuild.exe end"
+                    bat "dotnet SonarScanner.MSBuild.dll end"
                 }
             }
         }
